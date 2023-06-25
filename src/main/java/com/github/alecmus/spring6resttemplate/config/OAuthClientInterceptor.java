@@ -37,7 +37,7 @@ public class OAuthClientInterceptor implements ClientHttpRequestInterceptor {
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         OAuth2AuthorizeRequest oAuth2AuthorizeRequest = OAuth2AuthorizeRequest
                 .withClientRegistrationId(clientRegistration.getRegistrationId())
-                .principal(createPrincipal())
+                .principal(principal)
                 .build();
 
         OAuth2AuthorizedClient client = manager.authorize(oAuth2AuthorizeRequest);
